@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Hackathons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .filter {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        .add-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .add-button:hover {
+            background-color: #218838;
+        }
+        .event {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .event h2 {
+            font-size: 1.8rem;
+            color: #333;
+        }
+        .event p {
+            margin: 10px 0;
+            color: #555;
+            font-size: 14px;
+        }
+        .event .date {
+            font-size: 14px;
+            color: #777;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upcoming Hackathons</h1>
+
+        <!-- Filter and Add button -->
+        <div class="filter">
+            <div>
+                <label for="category-filter">Filter by category:</label>
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="AI">AI & Machine Learning</option>
+                    <option value="Blockchain">Blockchain</option>
+                    <option value="Design">Social Good</option>
+                    <option value="Web Development">Web Development</option>
+                </select>
+            </div>
+            <button class="add-button" onclick="window.open('eventsadd.html', '_blank')">
+                &#43; Add
+            </button>
+        </div>
+
+        <div id="events-container"></div>
+    </div>
+
+    <script>
+        const hackathons = [
+            {
+                name: 'CodeFest 2024',
+                date: 'March 10-12, 2024',
+                description: 'A hackathon focusing on AI and Machine Learning innovations.',
+                category: 'AI',
+                buttons: [
+                    { text: 'Register', url: 'https://codefest2024.com/register' },
+                    { text: 'Schedule', url: 'https://codefest2024.com/schedule' }
+                ]
+            },
+            {
+                name: 'Blockchain Hackathon',
+                date: 'April 5-6, 2024',
+                description: 'Explore the future of blockchain technology and develop groundbreaking solutions.',
+                category: 'Blockchain',
+                buttons: [
+                    { text: 'Register', url: 'https://blockchainhackathon.com/register' },
+                    { text: 'Details', url: 'https://blockchainhackathon.com/details' }
+                ]
+            },
+            {
+                name: 'InnovateX',
+                date: 'May 20-22, 2024',
+                description: 'Hack for social good. Create solutions that make a difference!',
+                category: 'Social Good',
+                buttons: [
+                    { text: 'Register', url: 'https://innovatex.com/register' },
+                    { text: 'Info', url: 'https://innovatex.com/info' }
+                ]
+            },
+            {
+                name: 'Dev Challenge 2024',
+                date: 'June 15-17, 2024',
+                description: 'A web development hackathon. Showcase your skills and creativity!',
+                category: 'Web Development',
+                buttons: [
+                    { text: 'Register', url: 'https://devchallenge2024.com/register' },
+                    { text: 'Agenda', url: 'https://devchallenge2024.com/agenda' }
+                ]
+            },
+            {
+                name: 'Build On',
+                date: 'October 19, 2024',
+                description: 'Web3 builders are laying the groundwork for a more equitable and fair internet.',
+                category: 'Blockchain',
+                buttons: [
+                    { text: 'Register', url: 'https://build-on.devfolio.co/' },
+                    { text: 'Schedule', url: 'https://build-on.devfolio.co/' }
+                ]
+            },
+            {
+                name: 'Codeissance 2024',
+                date: 'September 30, 2024',
+                description: 'Explore the future of code development.',
+                category: 'Web Development',
+                buttons: [
+                    { text: 'Register', url: 'https://codeissance-2.devfolio.co/' },
+                    { text: 'Details', url: 'https://codeissance-2.devfolio.co/' }
+                ]
+            },
+            {
+                name: 'Matrix2.0',
+                date: 'September 20, 2024',
+                description: 'Design. Create solutions that make a difference!',
+                category: 'Design',
+                buttons: [
+                    { text: 'Register', url: 'https://matrix.iitminternware.com/' },
+                    { text: 'Info', url: 'https://matrix.iitminternware.com/' }
+                ]
+            },
+            {
+                name: 'CodeLite',
+                date: 'October 19, 2024',
+                description: 'Gen AI gives you the platform to hold the edge of advancement.',
+                category: 'AI',
+                buttons: [
+                    { text: 'Register', url: 'https://codelite.devfolio.co/' },
+                    { text: 'Agenda', url: 'https://codelite.devfolio.co/' }
+                ]
+            }
+        ];
+
+        function displayEvents(events, category) {
+            const container = document.getElementById('events-container');
+            container.innerHTML = ''; // Clear any existing content
+
+            events
+                .filter(event => category === 'all' || event.category === category)
+                .forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+
+                    eventDiv.innerHTML = `
+                        <h2>${event.name}</h2>
+                        <p class="date">Date: ${event.date}</p>
+                        <p>${event.description}</p>
+                        <div class="buttons">
+                            ${event.buttons.map(button => `<a href="${button.url}" target="_blank">${button.text}</a>`).join('')}
+                        </div>
+                    `;
+                    container.appendChild(eventDiv);
+                });
+        }
+
+        // Initialize display with all events
+        displayEvents(hackathons, 'all');
+
+        // Event listener for the filter dropdown
+        document.getElementById('category-filter').addEventListener('change', (event) => {
+            displayEvents(hackathons, event.target.value);
+        });
+    </script>
+</body>
+</html>

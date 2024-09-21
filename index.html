@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shiksha Samagam</title>
+    <link rel="icon" type="image/x-icon" href="favicon.jpg">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header Section with Logo -->
+    <header>
+        <img src="logo.jpg" alt="Shiksha Samagam Logo">
+        <button class="dark-mode-toggle" id="dark-mode-toggle">
+            <i class="material-symbols-outlined">dark_mode</i>
+        </button>
+    </header>
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="material.html">Study Material</a>
+        <div class="dropdown-menu">
+            <a href="#">Events</a>
+            <div class="dropdown-content">
+                <a class="links" href="hackathons.html" data-id="1">Hackathons</a>
+                <a class="links" href="fests.html"   data-id="2">Fests</a>
+                <a class="links" href="workshops.html"   data-id="3">Workshops</a>
+                <a class="links" href="seminars.html"   data-id="4">Seminars</a>
+            </div>
+        </div>
+        <a href="#about-us">About Us</a>
+        <div class="dropdown-menu">
+            <a href="#">Contact</a>
+            <div class="dropdown-content">
+                <a class="links" href="https://github.com/shikshasamagam" target="_blank"><img src="github.svg"
+                         alt="github" width="20"> Github</a>
+                <a class="links" href="mailto:shikshasamagam2024@gmail.com">
+                    <img src="email.svg" alt="Email" width="20"> Email
+                </a>
+                <a class="links" href="contribution.html" target="_blank">
+                    <img src="form.svg" alt="Contribution" width="20"> Contribution
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" placeholder="Quick search..." id="searchInput">
+        <button><i class="material-symbols-outlined">search</i></button>
+    </div>
+    <div class="homepage">
+        
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Shiksha Samagam Logo" class="homepage-logo">
+            <h1 class="tagline">One stop solution for all your college needs.</h1>
+            <p class="description">Join us in making learning accessible and enjoyable through quality resources and engaging materials.</p>
+        </div>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card left">
+                    <h3>Comprehensive Study Materials</h3>
+                    <p>Explore a wide range of resources designed to enhance your learning experience.</p>
+                </div>
+                <div class="feature-card right">
+                    <h3>Interactive Learning Resources</h3>
+                    <p>Engage with materials that make learning fun and effective.</p>
+                </div>
+                <div class="feature-card left">
+                    <h3>Expert Guidance and Support</h3>
+                    <p>Get help from experienced educators and mentors.</p>
+                </div>
+                <div class="feature-card right">
+                    <h3>Community Events and Workshops</h3>
+                    <p>Join us for events that promote collaboration and knowledge sharing.</p>
+                </div>
+                <div class="feature-card left">
+                    <h3>Accessible Anywhere, Anytime</h3>
+                    <p>Learn at your own pace, from the comfort of your home or on the go.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Details Section -->
+     <div id="about-us">
+    <section class="details-section" id="details-section">
+        <h2>About Us</h2>
+        <p><h3>Welcome to Shiksha Samagam</h3><br>
+            Shiksha Samagam is committed to enhancing the educational experience of students by providing a centralized platform for all academic and extracurricular updates. We offer the latest updates on events, hackathons, workshops, seminars, and other educational resources across various universities. Our platform aims to keep students informed and engaged with the numerous opportunities available to them in the academic world. We are dedicated to continuously improving our platform based on user feedback to better serve the needs of the student community. Our vision is to expand our reach and become the leading educational platform for students, offering the most comprehensive and up-to-date information on all academic fronts.</p>
+        <div id="aboutsections"></div>
+    </section>
+    <!-- Footer Section -->
+    <footer>
+        <p>Disclaimer: All the books and resources hosted on Shiksha Samagam are provided for informational and educational purposes only. We do not claim ownership of any of the content available on the wesbite.<br><span id="visitorCount">Views: 0</span></p>
+    </footer>
+    <!-- JavaScript for Dark Mode, Real-time Search, and Details View -->
+    <script>
+        const semesterSelect = document.getElementById('semesterSelect');
+        const subjectSelect = document.getElementById('subjectSelect');
+        const goButton = document.getElementById('goButton');
+        const materialGrid = document.getElementById('materialGrid');
+
+        // Customized subject names for Computer Science branch
+        const subjects = {
+            1: ['Environmental', 'Applied Physics I', 'Applied Mathematics', 'Manufacturing Process', 'Communication Skill'],
+            2: ['Programming in C', 'Object-Oriented Programming'],
+            3: ['Discrete Mathematics', 'Digital Logic and Computer Designing', 'Data Structures', 'Object-Oriented Programming', 'Computational Methods', 'Indian Knowledge'],
+            4: ['Digital Circuits', 'Microcontroller Programming', 'Network Fundamentals'],
+            5: ['Database Design', 'Agile Software Development', 'Web Development'],
+            6: ['Front-End Technologies', 'Artificial Intelligence Basics', 'Data Science'],
+            7: ['Mobile Development', 'Cloud Architecture', 'Big Data Technologies'],
+            8: ['IT Project Management', 'Information Security', 'DevOps Practices']
+        };
+
+        // Customized syllabus content for each subject
+        const syllabusData = {
+            '3_sub1': `
+                <h3>Discrete Mathematics</h3>
+                <h4>Chapter:</h4>
+                <h5>UNIT-1</h5><p>Sets and Realtion </p><a href="https://drive.google.com/file/d/1-mqbxTiKYNRGnOEt2v9ifpVmBxmu6idn/view?usp=drivesdk" target="_blank">download/view</a>
+                <h5>UNIT-2</h5><p>Function</p><a href="https://drive.google.com/file/d/1-mqbxTiKYNRGnOEt2v9ifpVmBxmu6idn/view?usp=drivesdk " target="_blank">download/view</a>
+                <h5>UNIT-3</h5><p>semi group/sub group</p><a href="https://drive.google.com/file/d/1-mqbxTiKYNRGnOEt2v9ifpVmBxmu6idn/view?usp=drivesdk" target="_blank">download/view</a>
+                <h5>UNIT-4</h5><p> Graph terminlogy</p><a href="https://drive.google.com/file/d/1-mqbxTiKYNRGnOEt2v9ifpVmBxmu6idn/view?usp=drivesdk" target="_blank">download/view</a>
+            `,
+            '3_sub2': `
+                <h3>Digital Logic and Computer Designing</h3>
+                <h4>Topics:</h4>
+                <h5>Boolean Algebra</h5><p>Foundations of Boolean algebra.</p><a href="https://example.com/topic4" target="_blank">Learn</a>
+                <h5>Karnaugh Maps</h5><p>Simplification of Boolean expressions using Karnaugh maps.</p><a href="https://example.com/topic5" target="_blank">Learn</a>
+                <h5>Flip Flops</h5><p>Understanding flip flops and their applications.</p><a href="https://example.com/topic6" target="_blank">Learn</a>
+                 
+            `
+        };
+
+        document.getElementById('branchSelect').addEventListener('change', function () {
+            const selectedBranch = this.value;
+            const semesterContainer = document.getElementById('semesterContainer');
+            const subjectContainer = document.getElementById('subjectContainer');
+            semesterContainer.classList.toggle('hidden', !selectedBranch);
+            subjectContainer.classList.add('hidden');
+            subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+            materialGrid.innerHTML = '';
+            goButton.classList.add('hidden');
+        });
+
+        semesterSelect.addEventListener('change', function () {
+            const selectedSemester = this.value;
+            const selectedBranch = document.getElementById('branchSelect').value;
+            const subjectContainer = document.getElementById('subjectContainer');
+            if (selectedBranch === 'cse' && subjects[selectedSemester]) {
+                subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+                subjects[selectedSemester].forEach((subject, index) => {
+                    const option = document.createElement('option');
+                    option.value = `${selectedSemester}_sub${index + 1}`;
+                    option.textContent = subject;
+                    subjectSelect.appendChild(option);
+                });
+                subjectContainer.classList.remove('hidden');
+            } else {
+                subjectContainer.classList.add('hidden');
+                subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+            }
+            materialGrid.innerHTML = '';
+            goButton.classList.add('hidden');
+        });
+
+        subjectSelect.addEventListener('change', function () {
+            const selectedSubject = this.value;
+            if (selectedSubject) {
+                goButton.classList.remove('hidden');
+            } else {
+                goButton.classList.add('hidden');
+            }
+        });
+
+        goButton.addEventListener('click', function () {
+            const selectedSubject = subjectSelect.value;
+            if (selectedSubject && syllabusData[selectedSubject]) {
+                materialGrid.innerHTML = syllabusData[selectedSubject];
+            } else {
+                materialGrid.innerHTML = '<p>No data available for this subject.</p>';
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('dark-mode-toggle').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            const modeIcon = document.querySelector('#dark-mode-toggle i');
+            modeIcon.textContent = document.body.classList.contains('dark-mode') ? 'light_mode' : 'dark_mode';
+        });
+
+        // Code for updating the visitor count
+        window.addEventListener('load', function () {
+            let count = localStorage.getItem('visitorCount') || 0;
+            count++;
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('visitorCount').textContent = `Views: ${count}`;
+        });
+        function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle('light-mode');
+}
+
+    </script>
+</body>
+
+</html>

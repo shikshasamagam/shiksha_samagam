@@ -1,0 +1,24 @@
+{
+    "fests": [
+      {
+        "name": "TechFest 2024",
+        "startDate": "2024-12-05",
+        "endDate": "2024-12-07",
+        "location": "Los Angeles, CA",
+        "keyPerformances": "Live band, DJ, etc.",
+        "competitions": "Coding, Robotics, etc.",
+        "culturalPrograms": "Dance, Music, Drama, etc.",
+        "registrationLink": "https://example.com/fest1"
+      },
+      {
+        "name": "Cultural Fiesta",
+        "startDate": "2025-01-20",
+        "endDate": "2025-01-22",
+        "location": "Chicago, IL",
+        "keyPerformances": "Traditional dance, etc.",
+        "competitions": "Art, Photography, etc.",
+        "culturalPrograms": "Food stalls, etc.",
+        "registrationLink": "https://example.com/fest2"
+      }
+    ]
+  }

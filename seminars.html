@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Seminars</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .events-container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: left;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .filter {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .filter select {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .add-button {
+            background-color: #28a745;
+            color: white;
+            padding: 7px 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            text-align: center;
+        }
+        .add-button:hover {
+            background-color: #218838;
+        }
+        .event {
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .event h2 {
+            margin: 0;
+            color: #333;
+            font-size: 1.5rem;
+        }
+        .event p {
+            color: #555;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .buttons a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            padding: 7px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+        .event .event-meta {
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="events-container">
+            <h1>Upcoming Seminars</h1>
+
+            <!-- Add Filter and Button -->
+            <div class="filter">
+                <div>
+                    <label for="category-filter">Filter by category:</label>
+                    <select id="category-filter">
+                        <option value="all">All</option>
+                        <option value="AI">AI & Machine Learning</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Social Good">Social Good</option>
+                        <option value="Science">Science</option>
+                        <option value="Business">Business</option>
+                        <option value="Health">Health & Wellness</option>
+                    </select>
+                </div>
+                <button class="add-button" onclick="window.open('eventsadd.html', '_blank')">
+                    <span>+</span> Add
+                </button>
+            </div>
+
+            <!-- Seminars Listing -->
+            <div id="events-container"></div>
+        </div>
+    </header>
+
+    <script>
+        const seminars = [
+            {
+                name: 'AI Innovations',
+                date: 'October 10, 2024',
+                location: 'Conference Room A',
+                description: 'A seminar focusing on AI and Machine Learning innovations.',
+                category: 'AI',
+                buttons: [
+                    { text: 'Register', url: 'https://aiinnovations.com/register' },
+                    { text: 'Schedule', url: 'https://aiinnovations.com/schedule' }
+                ]
+            },
+            {
+                name: 'Web Development Trends',
+                date: 'October 15, 2024',
+                location: 'Online',
+                description: 'Latest trends and practices in modern web development.',
+                category: 'Web Development',
+                buttons: [
+                    { text: 'Register', url: 'https://webdevtrends.com/register' },
+                    { text: 'Info', url: 'https://webdevtrends.com/info' }
+                ]
+            },
+            {
+                name: 'Innovate for Social Good',
+                date: 'October 22, 2024',
+                location: 'Auditorium B',
+                description: 'Social innovation seminar focusing on solutions for social good.',
+                category: 'Social Good',
+                buttons: [
+                    { text: 'Register', url: 'https://innovateforsocialgood.com/register' },
+                    { text: 'Agenda', url: 'https://innovateforsocialgood.com/agenda' }
+                ]
+            },
+            {
+                name: 'International Conference on Global Business',
+                date: '22nd September, 2024',
+                description: 'A seminar exploring the latest advancements in Business.',
+                category: 'Business',
+                buttons: [
+                    { text: 'Register', url: 'http://ieeeconference.com/Conference/17991/ICGBLSS/' },
+                    { text: 'Schedule', url: 'https://www.conferencealerts.in/events/1100396' }
+                ]
+            },
+            {
+                name: 'National Conference on Advanced Research on Science',
+                date: '22nd Jan, 2025',
+                description: 'Learn about the latest trends in Science and Tech.',
+                category: 'Science',
+                buttons: [
+                    { text: 'Register', url: 'http://asar.org.in/Conference/61335/NCARSET/' },
+                    { text: 'Details', url: 'https://www.conferencealerts.in/events/1187883' }
+                ]
+            },
+            {
+                name: 'Alternative Health Conferences 2024-2025',
+                date: 'October, 2024',
+                description: 'Discuss the importance of health and wellness in today\'s world.',
+                category: 'Health',
+                buttons: [
+                    { text: 'Register', url: 'https://www.conferencealerts.in/alternative-health?date=2024-10' },
+                    { text: 'Agenda', url: 'https://www.conferencealerts.in/alternative-health?date=2024-10' }
+                ]
+            }
+        ];
+
+        function displayEvents(events, category) {
+            const container = document.getElementById('events-container');
+            container.innerHTML = ''; // Clear existing content
+
+            events
+                .filter(event => category === 'all' || event.category === category || event.description.includes(category))
+                .forEach(event => {
+                    const eventDiv = document.createElement('div');
+                    eventDiv.className = 'event';
+
+                    eventDiv.innerHTML = `
+                        <h2>${event.name}</h2>
+                        <p class="event-meta">Date: ${event.date} | Location: ${event.location || 'Online'}</p>
+                        <p>${event.description}</p>
+                        <div class="buttons">
+                            ${event.buttons.map(button => `<a href="${button.url}" target="_blank">${button.text}</a>`).join('')}
+                        </div>
+                    `;
+
+                    container.appendChild(eventDiv);
+                });
+        }
+
+        // Initialize display with all seminars
+        displayEvents(seminars, 'all');
+
+        // Event listener for the filter dropdown
+        document.getElementById('category-filter').addEventListener('change', (event) => {
+            displayEvents(seminars, event.target.value);
+        });
+    </script>
+</body>
+</html>

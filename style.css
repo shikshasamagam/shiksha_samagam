@@ -221,11 +221,22 @@ nav a:hover {
     font-weight: bold;
     margin: 10px 0;
     color:hsl(300, 77%, 73%);
+ animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(300, 77%, 73%); }
 }
 
 .description {
     font-size: 16px;
     color:hsl(300, 77%, 73%);
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
 }
 
 /* Features Section */
